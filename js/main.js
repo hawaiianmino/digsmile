@@ -26,20 +26,32 @@ $(function() {
 
   // ハンバーガーメニューの動作
   var flg = false;
+  var $body = $('body');
+  var $hamburger = $('.hamburger');
   var $menu = $('.header__nav');
-  $('.hamburger').on('click', function() {
+  var $bg = $('.bg-blk');
+
+  $hamburger.on('click', function() {
 
     $(this).toggleClass('open');
     $menu.toggleClass('open');
+    $bg.toggleClass('open')
 
     if(flg == false) {
-      $('body').css('overflow', 'hidden');
+      $body.css('overflow', 'hidden');
       flg = true;
     } else {
-      $('body').css('overflow', 'auto');
+      $body.css('overflow', 'auto');
       flg = false;
     }  
-    console.log(flg);
+  });
+
+  // メニューの外をクリックした際にもクローズ
+  $bg.on('click', function() {
+    $hamburger.removeClass('open');
+    $menu.removeClass('open');
+    $bg.removeClass('open');
+    $body.css('overflow', 'auto');
   });
 
   //ページ内リンク
@@ -50,11 +62,12 @@ $(function() {
       console.log(targetContents);
       var targetContents = $(targetContents).offset().top;
       $('body,html').animate({scrollTop: targetContents}, 500);
-      $('body').css('overflow', 'auto');
+      $body.css('overflow', 'auto');
     }
     setTimeout(function() {
-      $('.hamburger').removeClass('open');
-      $('.header__nav').removeClass('open');
+      $hamburger.removeClass('open');
+      $menu.removeClass('open');
+      $bg.removeClass('open');
     },1000);
   });
 
