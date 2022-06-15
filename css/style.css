@@ -179,7 +179,7 @@ input[type=radio] {
 }
 
 /* =============================================
-* top.html
+* index.html
 ============================================= */
 /* ====== header ====== */
 .header {
@@ -206,7 +206,7 @@ input[type=radio] {
   max-width: 189px;
 }
 .header__nav {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
